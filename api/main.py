@@ -14,6 +14,7 @@ def home():
     if flask.request.method == 'POST':
         code = flask.request.form['code']
         cards = [flask.request.form[f"card{i}"] for i in range(1,6)]
+        cards = [card + '\n' for card in cards]
         current = []
         if os.path.isfile(f"/tmp/{code}.txt"):
             fo = open(f"/tmp/{code}.txt", "r")

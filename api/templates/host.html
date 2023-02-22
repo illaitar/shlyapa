@@ -14,18 +14,18 @@ with "Hello {name}!"
 
 <body>
 
-    <form method="POST">
-        GameCode: <input type="text" name="code" placeholder={{gamecode}}><br>
-        <button type="submit">Submit</button>
-        <input type="hidden" name="building" value="manos">
-    </form>
-
     {% if entered_code %}
     <p> NOW WAITING FOR PLAYERS TO SUBMIT CARDS </p>
     <form method="POST">
         Ready?
         <button type="submit">Go!</button>
         <input type="hidden" name="building" value="casinos">
+    </form>
+    {% else %}
+    <form method="POST">
+        GameCode: <input type="text" name="code" placeholder={{gamecode}}><br>
+        <button type="submit">Submit</button>
+        <input type="hidden" name="building" value="manos">
     </form>
     {% endif %}
 
