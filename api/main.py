@@ -13,5 +13,5 @@ def home():
         import json
         with open('data.json', 'w') as f:
             json.dump({}, f)
-    return flask.render_template('index.html', message=message)
+    return flask.render_template('/templates/index.html', message=message)
 
