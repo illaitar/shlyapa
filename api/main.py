@@ -14,7 +14,8 @@ def home():
         print("heyheyheyhey")
         # message = "!!"
         fo= open("/tmp/back.txt", "r")
-        filebuffer = [flask.request.form['name-input']]
+        nm = str(flask.request.form['name-input'])
+        filebuffer = [nm]
         fo.writelines(filebuffer)
         fo.close()
 
