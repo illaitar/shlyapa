@@ -17,6 +17,9 @@ def home():
     if flask.request.method == 'POST':
         print("heyheyheyhey")
         # message = "!!"
+        fo= open("/tmp/test.txt", "r")
+        message = fo.readline()
+        fo.close()
         message = 'Hello ' + flask.request.form['name-input'] + '!'
 
     return flask.render_template('index.html', message=message)
