@@ -54,7 +54,7 @@ def host():
         else:
             # readyForm
             code = flask.request.form['code']
-            return flask.redirect(flask.url_for('game'), code=code)
+            return flask.redirect(flask.url_for('game', code=code))
     return flask.render_template('host.html', gamecode=code,entered_code=entered_code)
     
     
