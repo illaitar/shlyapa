@@ -2,10 +2,11 @@ import flask
 import json 
 from flask import Flask
 import os.path
-
+from random import shuffle
 
 
 app = Flask(__name__)
+
 
 @app.route('/cards', methods=['GET', 'POST'])
 def home():
@@ -32,9 +33,11 @@ def home():
         not_entered_cards = False
     return flask.render_template('index.html', message=message, not_entered_cards=not_entered_cards)
 
+
 @app.route('/', methods=['GET', 'POST'])
 def ma():
     return flask.render_template('main.html')
+   
     
 @app.route('/host', methods=['GET', 'POST'])
 def host():
@@ -50,12 +53,13 @@ def host():
             message = "Submitted Cards!"
         else:
             # readyForm
-            return flask.redirect(flask.url_for('game'))
+            code = flask.request.form['code']
+            return flask.redirect(flask.url_for('game'), code=code)
     return flask.render_template('host.html', gamecode=code,entered_code=entered_code)
     
     
-@app.route('/game', methods=['GET', 'POST'])
-def game():
+@app.route('/game/<code>', methods=['GET', 'POST'])
+def game(code):
     code="sosat"
     fo = open(f"/tmp/{code}.txt", "r")
     cards=fo.readlines()
