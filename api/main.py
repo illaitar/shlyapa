@@ -7,7 +7,7 @@ import os.path
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/cards', methods=['GET', 'POST'])
 def home():
     if os.path.isfile("/tmp/back.txt"):
         fo= open("/tmp/back.txt", "r")
