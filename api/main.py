@@ -1,15 +1,20 @@
 import flask
 import json 
 from flask import Flask
+import os.path
+
 
 
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    fo= open("/tmp/back.txt", "r")
-    message = fo.readline()
-    fo.close()
+    if os.path.isfile("/tmp/back.txt"):
+        fo= open("/tmp/back.txt", "r")
+        message = fo.readline()
+        fo.close()
+    else:
+        message = ''
     if flask.request.method == 'POST':
         print("heyheyheyhey")
         # message = "!!"
