@@ -1,6 +1,5 @@
 import flask
 import json 
-from app import views
 from flask import Flask
 
 # A simple Flask App which takes
