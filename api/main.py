@@ -18,7 +18,7 @@ def home():
     if flask.request.method == 'POST':
         print("heyheyheyhey")
         # message = "!!"
-        fo= open("/tmp/back.txt", "r")
+        fo= open("/tmp/back.txt", "w")
         nm = str(flask.request.form['name-input'])
         filebuffer = [nm]
         fo.writelines(filebuffer)
