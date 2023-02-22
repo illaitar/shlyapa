@@ -15,7 +15,7 @@ def home():
         cards = [flask.request.form[f"card{i}"] for i in range(1,6)]
         current = []
         if os.path.isfile(f"/tmp/{code}.txt"):
-            fo = open("/tmp/back.txt", "r")
+            fo = open(f"/tmp/{code}.txt", "r")
             current = fo.readlines()
             fo.close()
         for card in cards:
