@@ -12,7 +12,7 @@ def home():
         print("heyheyheyhey")
         # message = "!!"
         message = 'Hello ' + flask.request.form['name-input'] + '!'
-        # with open('data.json', 'w') as f:
-        #     json.dump({}, f)
+        with open('data.json', 'w') as f:
+            message = "TADAA"
     return flask.render_template('index.html', message=message)
 
