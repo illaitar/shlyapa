@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    fo= open("test.txt", "w")
+    fo= open("/tmp/test.txt", "w")
     filebuffer = ["brave new world"]
     fo.writelines(filebuffer)
     fo.close()
