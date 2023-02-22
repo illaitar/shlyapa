@@ -1,17 +1,17 @@
-from flask import Flask,request
+import flask
+import json 
+from flask import Flask
+
+
 app = Flask(__name__)
 
-@app.route("/")
+@app.route('/', methods=['GET', 'POST'])
 def home():
-	return "HELLO from vercel use flask"
+    message = ''
+    if flask.request.method == 'POST':
+        message = 'Hello ' + flask.request.form['name-input'] + '!'
+        import json
+        with open('data.json', 'w') as f:
+            json.dump({}, f)
+    return flask.render_template('index.html', message=message)
 
-@app.route('/example', methods=['POST'])
-def example():
-    if request.method == 'POST':
-        data = request.form['data']
-        print(data)
-        return f"The data you sent is: {data}"
-
-@app.route("/about")
-def about():
-	return "HELLO about"
