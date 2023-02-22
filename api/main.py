@@ -22,7 +22,7 @@ def home():
             current.append(card)
 
         # message = "!!"
-        fo = open("/tmp/back.txt", "w")
+        fo = open(f"/tmp/{code}.txt", "w")
         fo.writelines(current)
         fo.close()
         message = "Submitted Cards!"
@@ -33,3 +33,30 @@ def home():
 @app.route('/', methods=['GET', 'POST'])
 def ma():
     return flask.render_template('main.html')
+    
+@app.route('/host', methods=['GET', 'POST'])
+def host():
+    code = ''
+    entered_code = False
+    if flask.request.method == 'POST':
+        if flask.request.form["building"] == "manos":
+            # gameCodeForm
+            entered_code = True
+            code = flask.request.form['code']
+            fo = open(f"/tmp/{code}.txt", "w")
+            fo.close()
+            message = "Submitted Cards!"
+        else:
+            # readyForm
+            return flask.redirect(flask.url_for('game'))
+    return flask.render_template('host.html', gamecode=code,entered_code=entered_code)
+    
+    
+@app.route('/game', methods=['GET', 'POST'])
+def game():
+    code="sosat"
+    fo = open(f"/tmp/{code}.txt", "r")
+    cards=fo.readlines()
+    fo.close()
+    cards = ','.join(cards)
+    return flask.render_template('game.html', cards = cards)
