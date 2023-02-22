@@ -10,9 +10,8 @@ def home():
     message = ''
     if flask.request.method == 'POST':
         print("heyheyheyhey")
-        message = "!!"
-        # message = 'Hello ' + flask.request.form['name-input'] + '!'
-        # import json
+        # message = "!!"
+        message = 'Hello ' + flask.request.form['name-input'] + '!'
         # with open('data.json', 'w') as f:
         #     json.dump({}, f)
     return flask.render_template('index.html', message=message)
