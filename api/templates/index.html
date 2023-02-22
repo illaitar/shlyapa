@@ -13,6 +13,7 @@ with "Hello {name}!"
 </head>
 
 <body>
+    {% if not_entered_cards %}
     <form method="POST">
         GameCode: <input type="text" name="code"><br>
         Card1: <input type="text" name="card1"><br>
@@ -23,6 +24,7 @@ with "Hello {name}!"
         <button type="submit">Submit</button>
     </form>
     <p>{{message}}</p>
+    {% endif %}
 </body>
 
 </html>

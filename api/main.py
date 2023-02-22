@@ -10,6 +10,7 @@ app = Flask(__name__)
 @app.route('/cards', methods=['GET', 'POST'])
 def home():
     message = ''
+    not_entered_cards = True
     if flask.request.method == 'POST':
         code = flask.request.form['code']
         cards = [flask.request.form[f"card{i}"] for i in range(1,6)]
@@ -27,8 +28,8 @@ def home():
         fo.close()
         message = "Submitted Cards!"
         # message = 'Hello ' + flask.request.form['name-input'] + '!'
-
-    return flask.render_template('index.html', message=message)
+        not_entered_cards = False
+    return flask.render_template('index.html', message=message, not_entered_cards=not_entered_cards)
 
 @app.route('/', methods=['GET', 'POST'])
 def ma():
@@ -58,5 +59,5 @@ def game():
     fo = open(f"/tmp/{code}.txt", "r")
     cards=fo.readlines()
     fo.close()
-    cards = ','.join(cards)
+    cards = ' '.join(cards)
     return flask.render_template('game.html', cards = cards)
