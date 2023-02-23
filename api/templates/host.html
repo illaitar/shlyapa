@@ -18,8 +18,8 @@ with "Hello {name}!"
         {% if entered_code %}
         <h1> Ждем пока все игроки пишут карты </h1>
         <form method="POST">
-            Все игроки готовы?
-            <button type="submit">Поехали!</button>
+            Все игроки готовы?<br>
+            <input type="submit" value="Поехали!">
             <input type="hidden" name="building" value="casinos">
             <input type="hidden" name="code2" value={{gamecode2}}><br>
         </form>
@@ -27,7 +27,7 @@ with "Hello {name}!"
         <h1> Введите код игры </h1>
         <form method="POST">
             Код игры: <input type="text" name="code" placeholder={{gamecode}}><br>
-            <button type="submit">Начать</button>
+            <input type="submit" value="Начать">
             <input type="hidden" name="building" value="manos">
         </form>
         {% endif %}
