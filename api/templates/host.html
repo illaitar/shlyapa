@@ -10,25 +10,28 @@ with "Hello {name}!"
 
 <head>
     <title>SHLYAPA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='def.css') }}">
 </head>
 
 <body>
-
-    {% if entered_code %}
-    <p> NOW WAITING FOR PLAYERS TO SUBMIT CARDS </p>
-    <form method="POST">
-        Ready?
-        <button type="submit">Go!</button>
-        <input type="hidden" name="building" value="casinos">
-    </form>
-    {% else %}
-    <form method="POST">
-        GameCode: <input type="text" name="code" placeholder={{gamecode}}><br>
-        <button type="submit">Submit</button>
-        <input type="hidden" name="building" value="manos">
-    </form>
-    {% endif %}
-
+    <div class="form-style-6">
+        {% if entered_code %}
+        <h1> Ждем пока все игроки пишут карты </h1>
+        <form method="POST">
+            Все игроки готовы?
+            <button type="submit">Поехали!</button>
+            <input type="hidden" name="building" value="casinos">
+            <input type="hidden" name="code2" value={{gamecode2}}><br>
+        </form>
+        {% else %}
+        <h1> Введите код игры </h1>
+        <form method="POST">
+            Код игры: <input type="text" name="code" placeholder={{gamecode}}><br>
+            <button type="submit">Начать</button>
+            <input type="hidden" name="building" value="manos">
+        </form>
+        {% endif %}
+    </div>
 </body>
 
 </html>

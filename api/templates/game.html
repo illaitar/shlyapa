@@ -9,12 +9,42 @@ with "Hello {name}!"
 <html>
 
 <head>
-    <title>Simple Flask App</title>
+    <title>Game!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='def.css') }}">
 </head>
 
 <body>
-    {{cards}}<br>
-    <p> Hey my man!!!</p>
+    {% if render_start %}
+    <div class="form-style-6">
+        <form method="POST">
+            <input type="submit" value="Начать раунд">
+            <input type="hidden" value="start" name="state">
+        </form>
+        <br>
+        <form action="{{ url_for('ma') }}">
+            <input type="submit" value="Новая игра">
+        </form>
+    </div>
+    {% else %}
+    <div class="form-style-6">
+        <h1>Слово: {{ cur_card }}</h1>
+        <form method="POST">
+            <input type="submit" value="Следущее слово">
+            <input type="hidden" value="next" name="state">
+            <input type="hidden" value="{{ nextnum }}" name="num">
+            <input type="hidden" value="nxt" name="posttype">
+            <input type="hidden" value="{{ rd }}" name="rd">
+        </form>
+        <br>
+        <form method="POST">
+            <input type="submit" value="Переход хода">
+            <input type="hidden" value="next" name="state">
+            <input type="hidden" value="{{ nextnum }}" name="num">
+            <input type="hidden" value="back" name="posttype">
+            <input type="hidden" value="{{ rd }}" name="rd">
+        </form>
+    </div>
+    {% endif %}
 </body>
 
 </html>

@@ -7,17 +7,44 @@ with "Hello {name}!"
 -->
 
 <html>
+<style>
+    .bam input[type="submit"],
+    .bam input[type="button"] {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        width: 100%;
+        padding: 3%;
+        background: #43D1AF;
+        border-bottom: 2px solid #30C29E;
+        border-top-style: none;
+        border-right-style: none;
+        border-left-style: none;
+        color: #fff;
+    }
+
+</style>
 
 <head>
     <title>SHLYAPA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='def.css') }}">
 </head>
 
 <body>
-    <a href="{{ url_for('home') }}"> ENTER CARDS </a> <br>
+    <div class="form-style-6">
+        <h1>Шляпа</h1>
 
-    <a href="{{ url_for('host') }}"> HOST GAME </a> <br>
+        <form action="{{ url_for('home') }}">
+            <input type="submit" value="Игрок">
+        </form>
+        <br>
+        <form action="{{ url_for('host') }}">
+            <input type="submit" value="Хост">
+        </form>
+        <br>
 
-    by Nikita Alutis, 2023
+        <center>by Nikita Alutis, 2023</center>
+    </div>
 
 </body>
 
